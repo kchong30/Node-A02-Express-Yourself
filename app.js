@@ -6,12 +6,14 @@ const logger = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
 const profilesRouter = require("./routers/profilesRouter");
+const indexRouter = require("./routers/indexRouter");
 
 const port = process.env.PORT || 3003;
 const app = express();
 
 app.use(logger("dev"));
 
+app.use("/", indexRouter);
 app.use("/profiles", profilesRouter);
 
 
