@@ -48,4 +48,23 @@ apiRouter.get("/quotes", (req, res) => {
     });
 });
 
+apiRouter.get("/quotes/:id", (req, res) => {
+    fs.readFile(dataPath + "profiles.json")
+      .then((contents) => {
+        const profilesJson = JSON.parse(contents);
+        const profileJson = profilesJson
+          .filter((quote) => quote.author === req.params.id)
+          .shift();
+        res.json(profileJson);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.writeHead(500);
+        res.end("Error");
+      });
+  });
+
+
+
+
 module.exports = apiRouter;
