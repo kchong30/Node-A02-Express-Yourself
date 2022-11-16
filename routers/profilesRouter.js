@@ -6,8 +6,8 @@ const profilesRouter = express.Router();
 
 const dirPath = path.join(__dirname, "../data/");
 
-profilesRouter.get("/", (req, res) => {      /
-    fs.readFile(dataPath + "profiles.json")
+profilesRouter.get("/", (req, res) => {      
+    fs.readFile(dirPath + "profiles.json")
       .then((contents) => {
         const profilesJson = JSON.parse(contents);
         profilesJson.sort((a, b) =>
