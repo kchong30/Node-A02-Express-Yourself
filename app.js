@@ -5,15 +5,25 @@ const expressLayouts = require('express-ejs-layouts');
 const logger = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
-const profilesRouter = require("./routers/profilesRouter");
+
 const indexRouter = require("./routers/indexRouter");
+const profilesRouter = require("./routers/profilesRouter");
+const apiRouter = require("./routers/apiRouter");
 
 const port = process.env.PORT || 3003;
 const app = express();
-
 app.use(logger("dev"));
 
-app.use("/", indexRouter);
+app.use(express.static("public"));
+
+app.use(expressLayouts);
+app.set("layout", "./layouts/full-width");
+
+app.set ("views", path.join(__dirname,"views"));
+
+app.set("view engine", "ejs");
+
+app.use(indexRouter);
 app.use("/profiles", profilesRouter);
 
 
