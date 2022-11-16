@@ -12,6 +12,11 @@ const apiRouter = require("./routers/apiRouter");
 
 const port = process.env.PORT || 3003;
 const app = express();
+
+const cors = require("cors");
+// allow cross origin requests from any port on local machine
+app.use(cors({ origin: [/127.0.0.1*/, /localhost*/] }));
+
 app.use(logger("dev"));
 
 app.use(express.static("public"));
