@@ -13,8 +13,6 @@ profilesRouter.get("/", (req, res) => {
         profilesJson.sort((a, b) =>
           a.name > b.name ? 1 : b.name > a.name ? -1 : 0
         );
-  
-        // prepare and send an OK response
         res.render("profiles", {
           title: "Express Yourself - Profiles",
           profiles: profilesJson,
@@ -28,21 +26,15 @@ profilesRouter.get("/", (req, res) => {
   });
 
   profilesRouter.get("/:id", (req, res) => {
-    fs.readFile(dataPath + "profiles.json")
+    fs.readFile(dirPath + "profiles.json")
       .then((contents) => {
-        console.log(contents);
-        // need to parse the raw buffer as json if we want to work with it
         const profilesJson = JSON.parse(contents);
-        console.log(profilesJson);
-        // sort the objects by name
         profilesJson.sort((a, b) =>
           a.name > b.name ? 1 : b.name > a.name ? -1 : 0
         );
         const profileJson = profilesJson
           .filter((profile) => profile.id === req.params.id)
           .shift();
-        console.log(profileJson);
-        //   prepare and send an OK response
         res.render("profile", {
           title: "Express Yourself - " + profileJson.name,
           profiles: profilesJson,
