@@ -1,0 +1,30 @@
+{
+  "name": "node-a02-express-yourself",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kchong30/Node-A02-Express-Yourself.git"
+  },
+  "keywords": [],
+  "author": "Kevin Chong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kchong30/Node-A02-Express-Yourself/issues"
+  },
+  "homepage": "https://github.com/kchong30/Node-A02-Express-Yourself#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
